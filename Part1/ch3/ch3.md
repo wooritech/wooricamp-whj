@@ -1,0 +1,102 @@
+# 2023-12-20
+# Part 1. ch 3
+
+- Doctype(DTD)
+  - !DOCTYPE html 로 시작, 웹표준에 의거하여 실행
+  - 문서의 html의 버전을 표시
+  - 기본적으로 HTML5를 표준으로 지정
+  - HTML1~4는 명시 필요 없음
+  - XHTML 버전
+    - !DOCTYPE html PUBLIC 으로 시작
+
+- HTML, HEAD, BODY
+  - html
+    - 문서의 전체 범위를 표시
+  - head
+    - 비가시적인 "정보"를 나타내는 범위
+    - 제목, 설명, 사용할 파일 위치, 스타일(CSS)
+  - body
+    - 가시적인 "구조"를 나타내는 범위
+    - 로고, 헤더, 푸터, 내비게이션, 메뉴, 버튼, 이미지
+- CSS, JS 연결하기
+  - css
+    - 사이드 바 새로운 파일 생성
+    - main.css
+    - div 중괄호 엔터
+    - colcr: red;
+    - font-size: 100px;
+    - index.html의 head에 link ./main.css 작성(html과 css 연결)
+    - css의 lang속성 = 언어 설정
+  - js
+    - 사이즈 바 파일 생성
+    - main.js
+    - console.log(' '); (콘솔에 기록을 남긴다)
+    - html에 script 태그 생성 후 앞쪽 script의 뒤쪽에 src="./main.js"
+    - 브라우저에서 f12로 개발자 도구 확인 (메뉴에서 위치 조정 가능, Elements와 console을 가장 많이 사용)
+
+- 정보를 의미하는 태그 살펴보기
+  - style 태그
+    - css를 html 내부에 작성하는 방법
+  - title 태그
+    - HTML 문서의 제목을 정의 (웹사이트의 이름)
+  - link 태그
+    - 외부의 문서(대부분 css)를 가져와 연결
+    - rel=가져올 문서와의 관계, href=가져올 문서의 경로
+    - 페이지 아이콘(브라우저의 탭 부분 대표 아이콘=favicon)를 연결하는것도 가능
+  - script 태그 (link와 stule 태그 기능 포함)
+    - src=파일 가져오기, 
+    - HTML 내부에 js 작성 가능
+  - meta 태그
+    - 위에서 표현 불가능한 모든 것
+      - meta name = 정보의 종류 content= 정보의 실재값
+      - meta name viewport(모바일 장치만 해당, 데스크탑 x)= 영역 contrnt= 크기 지정
+      - meta charset = 문자의 인코딩 방식
+        - UTF-8을 표준처럼 사용
+
+- 화면에 이미지 태그 살펴보기
+  - f12(개발자 도구) 열기 elements 옆 화살표 아이콘 클릭 후 화면으로 이동하면 영역이 잡힌다.
+  - 영역을 클릭하면 개발자도구에 div class=logo 생성됨
+  - 아래쪽 styles 탭에서 로고의 정보 확인
+  - 이미지의 경로를 우클릭해서 나오는 메뉴 중 open in new tab을 선택
+  - 출력되는 이미지를 다른 이름으로 저장 후 프로젝트에 삽입
+  - 사이드바에 이미지 파일 생성됨
+  - 새로운 폴더 생성으로 이미지 폴더 작성 후 이미지 이동
+    - 다른건 폴더로 관리해도 되지만 index.html은 최상위 경로에 있어야 되기에 안됨
+    - 폴더에 삽입하면 주변에서 찾기 불가, 경로 재설정
+  - body에 img 태그 src로 경로 작성, alt는 이미지를 작성하기 위해서 필수인 속성 (이미지를 출력 할 수 없을 떄 출력될 문자)
+
+- 상대 경로와 절대 경로
+  - 상대 경로 
+    - ./  (주변에서 찾기)(생략 가능)
+    - ../ (상위 폴더로 이동해서 주변 찾기)
+  - 절대 경로
+    - http(https) (원격)
+    - /(//)       (루트 = 최상위 경로 = 프로잭트 전체)
+  - 상태바의 port 번호로 호스트 가능
+    - `http://localhost:port번호`
+  - css background를 사용해서 이미지 출력하는 방법도 있다.
+
+- 페이지를 나누고 연결하기
+  - body에 a 태그 생성 후 href 경로설정 후 바로 뒤에 글자 입력하면 그 글자를 선택 할 시 해당 경로로 이동
+
+- 모든 파일 공백 크기 설정
+  - vscode의 환경설정 열기 (code->기본설정, command + shift + p-> 설정)
+  - teb size 검색 후 변경
+
+- 개발자 도구 사용하기
+  - Elements
+    - 화살표 아이콘 선택 후 화면으로 이동해서 영역 선택
+    - 해당 코드에 불이 들어옴
+    - 하단 styles로 내용 확인 (element.styles에서 css 임시 입력 가능)
+      - hov(호버) 선택
+        - hover 선택하면 LI 누른 상태처럼 만들 수 있다.
+    - Computed
+      - 실재로 적용된 값만 볼수 있다
+    - html, css 분석에 사용 가능
+      - 선택자
+        - header-container .icons
+          - .은 class를 의미
+          - 중안선 되어있는건 적용 x
+          - display: flex; 는 LI 태그를 수평 정렬
+  - Consoie
+  - Sources
