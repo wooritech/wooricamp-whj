@@ -1,0 +1,53 @@
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  transition: 1s;
+}
+.box:hover {
+  width: 300px;
+}
+
+.rof {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
+.rof:active {
+  width: 300px;
+  background-color: blueviolet;
+}
+
+input {
+
+}
+input:focus {
+  background-color: orange;
+}
+
+.tab {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
+.tab:focus {
+  background-color: yellowgreen;
+}
+
+.fruits span:first-child {
+  color:red;
+}
+.fruits h3:last-child {
+  color: blue;
+}
+.fruits *:nth-child(3) {
+  color: gray;
+}
+.fruits *:nth-child(2n) {
+  color: purple;
+}
+
+.qwer *:not(span) {
+  color:red;
+}
