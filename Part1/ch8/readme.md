@@ -81,7 +81,28 @@
   - auto 넘친 부분 스크롤로 보여주기 (넘치는 축만)
 
 # 출력 특성(display)
-- 
-# 투명도
+- 요소의 화면 출력 특성을 변경
+  - 값이 지정 되어 있는 요소
+    - block
+    - inline
+    - inline-block
+    - 기타
+  - 값이 지정되지 않은 요소
+    - flex 플렉스 박스 (1차원 레이아웃 수평 혹은 수직 정렬에 용의)
+    - grid 그리드 (2차원 레이아웃)
+    - none 보여짐 특성 없음, 화면에서 사라짐
+
+# 투명도(opacity)
+- 기본값1
+- 0~1, 소수점 단위 0 생략 가능
+
 # 글꼴
+- font-style 글자의 기울기 지정
+  - <span style="color:red">normal</span> 기울기 없음 (기본값)
+  - italic 기울어진 글자
+- font-weight
+  - <span style="color:red">normal</span> 400
+  - bold 700
+  - 100~900
+
 # 문자
