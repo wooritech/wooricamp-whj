@@ -1,7 +1,30 @@
-span {
+span.hw{
   display: block;
   width: 120px;
   height: 30px;
   background-color: royalblue;
   color: white;
+  margin: 20px;
+}
+
+span.HW{
+  display: ;
+  width: 120px;
+  height: 30px;
+  background-color: royalblue;
+  color: white;
+  margin: 20px;
+}
+
+.parent {
+  width: 100px;
+  height: 100px;
+  background-color: rosybrown;
+}
+.child {
+  width: 200px;
+  height: 50px;
+  background-color: orange;
+  opacity: 0.5;
+  margin: auto;
 }
