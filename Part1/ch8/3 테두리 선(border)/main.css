@@ -1,0 +1,15 @@
+.container .item {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+}
+
+.container .item:first-child {
+  border: 100px solid red; /*기본색은 검정 */
+}
+.container .item:nth-child(2) {
+  border: 50px dashed rgb(10, 40, 60);
+}
+.container .item:last-child {
+  border: 10px dotted #fff;
+}
