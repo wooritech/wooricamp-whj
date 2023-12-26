@@ -2,7 +2,8 @@
   width: 100px;
   height: 100px;
   background-color: orange;
-  transition: background-color 3s;
+  transition: background-color 3s 2s;
+  /* background-color를 사용해 transition의 적용 대상을 색상으로 한정한후 2초의 딜레이 후 3초동안 색상이 변경 되도록 설정 */
 }
 div:active {
   width: 300px;
