@@ -116,4 +116,37 @@
 - font-family
   - 사용할 글꼴 후보를 지정
   - font-family:글꼴1, "글꼴2", ... 글꼴계열; (글꼴계열은 필수))
+
 # 문자
+- color 기본값 rgb(0.0.0) 검정색
+- text-align 문자 수평정렬, 기본값 left
+  - 오른쪽 정렬 right
+  - 가운데 정렬 center
+  - 양쪽 정렬 justify
+- text-decoration 문자에 장식 선 기본값 none
+  - 밑줄 underline
+  - 윗줄 overline
+  - 중앙선 line-through
+- text-indent 들여쓰기
+  - 기본값 0
+  - 단위 (음수 사용으로 내어 쓰기 가능)
+- 예외: a태그는 기본색이 파랑 혹은 보라색, 밑줄 들어감
+
+# 배경
+- background-color 기본값 투명함 transparent
+- background-image 기본값 none
+  - background-image: url("")
+- background-repeat 기본값 반복 repeat
+  - no-repeat 반복 없음
+  - repeat-x 이미지를 수평 반복
+  - repeat-y 이미지를 수직 반복
+- background-position 요소의 배경 이미지 위치 기본값 0%0%(왼쪽 상단)
+  - 4방향+중앙
+  - 단위
+- background-size 이미지 크기 조작 기본값 auto 이미지 실제 크기
+  - 단위
+  - cover 상하, 좌우 중 더 넓은 쪽에 맞춤
+  - contain 상하, 좌우 중 더 짧은 쪽에 맞춤
+- background-attaachment
+  - scroll 기본값 이미지가 요소를 따라서 같이 스크롤
+  - fixed 이미지가 뷰포트에 고정, 스크롤 x

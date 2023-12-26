@@ -5,10 +5,11 @@ span.hw{
   background-color: royalblue;
   color: white;
   margin: 20px;
+  font-style: italic
 }
 
 span.HW{
-  display: ;
+  display: block;
   width: 120px;
   height: 30px;
   background-color: royalblue;
