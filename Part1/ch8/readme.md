@@ -150,3 +150,6 @@
 - background-attaachment
   - scroll 기본값 이미지가 요소를 따라서 같이 스크롤
   - fixed 이미지가 뷰포트에 고정, 스크롤 x
+
+# 배경
+-
