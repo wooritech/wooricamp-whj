@@ -9,5 +9,6 @@ div {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-attachment:scroll;
+  background-attachment: scroll;
+  /* attachment에 fixed를 사용할 경우 size 기능이 작동하지 않음  */
 }
