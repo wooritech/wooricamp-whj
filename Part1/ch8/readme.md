@@ -136,7 +136,7 @@
 - background-color 기본값 투명함 transparent
 - background-image 기본값 none
   - background-image: url("")
-- background-repeat 기본값 반복 repeat
+- background-repeat 기본값 이미지 반복 출력 repeat
   - no-repeat 반복 없음
   - repeat-x 이미지를 수평 반복
   - repeat-y 이미지를 수직 반복
@@ -149,9 +149,9 @@
   - contain 상하, 좌우 중 더 짧은 쪽에 맞춤
 - background-attaachment
   - scroll 기본값 이미지가 요소를 따라서 같이 스크롤
-  - fixed 이미지가 뷰포트에 고정, 스크롤 x
+  - fixed 이미지가 뷰포트에 고정, 스크롤 
 
-# 배경
+# 배치
 - position 요소의 위치 지정 기준 (음수 사용 가능)
   - static 기본값 기준없음
   - relative 요소 자신을 기준
@@ -162,7 +162,60 @@
   - `2`z-index의 값이 크면 위에 쌓인다
   - `3`더 나중에 작성된 것
   - 조건 1,2,3 순으로 우선 순위
-  - x-index 요소의 쌓임 정도를 지정
+  - z-index 요소의 쌓임 정도를 지정
     - auto 기본값(0)
     - 숫자 높을 수록 위에 쌓임 (음수 사용가능)
   - position의 값으로 absolute, fixed이 지정된 요소는, display 속성이 block으로 변경된다.
+
+  # 플렉스
+  - display
+    - flex 요소 수평정렬, 컨테이너 수직정렬
+    - inline-flex 요소 수직정렬, 컨테이너 수직정렬
+  - flex-direction 주 축을 설정
+    - row 좌-> 우
+    - row-reverse 우-> 좌
+    - column 위->아래
+    - column-reverse 아래-> 위
+  - flex-wrap: flex items 줄 바꿈 여부
+    - nowrap 기본값 줄바꿈 없음
+    - wrap
+  - justify-content 주축 정렬 시작점
+    - flex-start
+    - flex-end
+    - center
+  - align-content 교차축 묶음 정렬 시작점
+    - stretch 기본값 Flex items를 시작점으로 정렬
+    - flex-start Flex items를 시작점으로 정렬
+    - flex-end Flex items를 끝으로 정렬
+    - center Flex items를 가운데 정렬
+  - align-items 교차축 한 줄 정렬
+    - stretch 기본값 Flex items를 교차 축으로 늘림
+    - flex-start Flex items를 시작점으로 정렬
+    - flex-end Flex items를 끝으로 정렬
+    - center Flex items를 가운데 정렬
+  - order flex item의 정렬 순서
+    - 기본값 0, 음수 가능, 숫자가 작을수록 우선 순위
+  - flex-grow flex item의 증가 너비 비율
+    - 화면의 공간을 어떻게 나눠가질 비율
+    - 기본값 0
+  - flex-shrink flex item의 감소 너비 비율 
+    - 화면의 크기를 축소할 때 해당 요소의 크기가 같이 작아지게 할 것인지
+    - 기본값 1
+  - flex-basis flex item의 공간 배분 전 기본 너비
+    - auto 기본값, 요소의 content 너비
+    - 단위
+
+- 전환 (상태를 전환 시킬때 적용할 내용, 가상 클레스 부분 참조)
+  - transition-duration
+  - transition-property
+    - all 기본값 모든 속성에 적용
+    - 속성 이름 전환 효과를 사용할 속성을 이름을 명시
+  - transition-timing-function
+    - ease 기본값 느리게-빠르게-느리게
+    - linear 일정하게
+    - ease-in 느리게-빠르게
+    - ease-out 빠르게-느리게
+    - ease-in-out 느리게-빠르게-느리게
+    - 추천 사이트 ease functions
+  - transition-delay 전환 효과가 몇 초 뒤에 시작할지 대기시간 지정
+    - 기본값 0초

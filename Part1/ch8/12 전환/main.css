@@ -1,0 +1,10 @@
+.property {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  transition: background-color 3s;
+}
+div:active {
+  width: 300px;
+  background-color: aqua;
+}
