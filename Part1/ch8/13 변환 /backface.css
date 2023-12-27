@@ -1,0 +1,27 @@
+.container1 {
+  width: 200px;
+  height: 100px;
+  background-color: royalblue;
+  margin: 50px;
+}
+.container1 .item {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  transform: rotateY(180deg);
+  backface-visibility: visible;
+  font-size: 50px;
+}
+.container2 {
+  width: 200px;
+  height: 100px;
+  background-color: royalblue;
+  margin: 50px;
+}
+.container2 .item {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
