@@ -1,7 +1,7 @@
 # 전화
 
 ## 상태를 전환 시킬때 적용할 내용, 가상 클레스 부분 참조
-  - transition-duration
+  - transition
   - transition-property
     - all 기본값 모든 속성에 적용
     - 속성 이름 전환 효과를 사용할 속성을 이름을 명시
