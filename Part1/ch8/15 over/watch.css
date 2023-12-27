@@ -73,13 +73,3 @@ body {
 .container .heroes .hero:nth-child(30) .image { background-image: url("https://raw.githubusercontent.com/ParkYoungWoong/overwatch-hero-selector-vanilla/master/images/hero30.png");}
 .container .heroes .hero:nth-child(31) .image { background-image: url("https://raw.githubusercontent.com/ParkYoungWoong/overwatch-hero-selector-vanilla/master/images/hero31.png");}
 .container .heroes .hero:nth-child(32) .image { background-image: url("https://raw.githubusercontent.com/ParkYoungWoong/overwatch-hero-selector-vanilla/master/images/hero32.png");}
-
-
-.container .logo {
-  max-width: 300px;
-  padding: 0 20px;
-}
-.container .logo img {
-  width: 100%;
-
-}
