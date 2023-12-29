@@ -30,6 +30,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" integrity="sha512-1dalHDkG9EtcOmCnoCjiwQ/HEB5SDNqw8d4G2MKoNwjiwMNeBAkudsBCmSlMnXdsH8Bm0mOd3tl/6nL5y0bMaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- gsap = css의 transition?  -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script defer src="./js/main.js"></script>
 </head>
 <body>
@@ -382,10 +384,8 @@
         <a href="javascript:void(0)" class="btn btn--brown">자세히 보기</a>
       </div>
       <div class="cup1 fade-in">
-        <img src="./images/visual_cup1.png" alt="new OATMEAL LATTE" class="cup1 image"/>
-        <div> 
-          <img src="./images/visual_cup1_text.png" alt="오트밀 라떼" class="cup1 text"/> 
-        </div>
+        <img src="./images/visual_cup1.png" alt="new OATMEAL LATTE">
+        <img src="./images/visual_cup1_text.png" alt="오트밀 라떼" class="cup1 text"/>
       </div>
       <div class="fade-in">
         <img src="./images/visual_cup2.png" alt="new STARBUCKS CARAMEL CRUMBLE MOCHA" class="cup2 image"/>
@@ -393,6 +393,29 @@
       </div>
       <div class="fade-in">
         <img src="./images/visual_spoon.png" alt="spoon" class="spoon image"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- 공지사항  -->
+  <section class="notice">
+    <div class="notice-line">
+      <div class="bg-left"></div>
+      <div class="bg-right"></div>
+      <div class="inner">
+        <div class="inner__left">
+          <h2>공지사항</h2>
+          <div class="swiper-container"></div>
+          <a href="javascript:void(0)" class="notic-line__more">
+            <div class="material-icons">add_circle</div>
+          </a>
+        </div>
+        <div class="inner__right">
+          <h2>스타벅스 프로모션</h2>
+          <div class="toggle-pronmotion">
+            <div class="material-icons">upload</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
