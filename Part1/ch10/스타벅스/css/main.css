@@ -267,7 +267,7 @@ header .badges .badge {
 }
 .visual .cup1.text {
   position: absolute;
-  bottom: 550px;
+  top: -50px;
   right: 220px;
 }
 .visual .cup2.image {
@@ -331,8 +331,15 @@ header .badges .badge {
 }
 .notice .notice-line .inner__left .swiper-container {
   height: 62px;
-  background-color: orange;
   flex-grow: 1;
+}
+.notice .notice-line .inner__left .swiper-slide {
+  height: 62px;
+  display: flex;
+  align-items: center;
+}
+.notice .notice-line .inner__left .swiper-slide a {
+  color: #fff;
 }
 .notice .notice-line .inner__left .notice-line__more {
   width: 62px;
@@ -366,4 +373,102 @@ header .badges .badge {
 }
 .notice .notice-line .inner__right .toggle-promotion .material-icons {
   font-size: 30px;
+}
+
+/* swiper-container 필요없던 부분, 공지사항이 컨테이너를 넘어서 출력되서 추가 */
+.swiper-container {
+  overflow: hidden;
+}
+
+.notice .promotion {
+  height: 693px;
+  background-color: #f6f5ef;
+  position: relative;
+  transition: height .4s;
+  overflow: hidden;
+}
+.notice .promotion.hide {
+  height: 0;
+}
+
+.notice .promotion .swiper-container {
+  /* width: calc(819px * 3 + 20px); */
+  width: 100%;
+  /* width: calc(100% - 50px); */
+  /* width: 1757.5px; */
+
+  height: 553px;
+  position: relative;
+}
+
+.notice .promotion .swiper-slide {
+  opacity: .5;
+  transform: opacity 1s;
+  /* position: absolute; */
+}
+
+.notice .promotion .swiper-slide img{
+  width: 100%;
+  height: 500px;
+}
+.notice .promotion .swiper-slide-active {
+  opacity: 1;
+}
+.notice .promotion .swiper-slide .btn {
+  position: absolute;
+  bottom: 40;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* .notice .promotion .swiper-pagination {
+  bottom: 40px;
+  left: 0;
+  right: 0;
+} 
+몇번쨰 페이지인지를 나타내는 페이지네이션의 위치를 하단으로 옴기기 위한 부분이지만 작성 전에 이미 위치해있다.*/
+
+.notice .promotion .swiper-pagination .swiper-pagination-bullet {
+  background-color: transparent;
+  background-image: url("../images/promotion_slide_pager.png");
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  outline: none;
+}
+.notice .promotion .swiper-pagination .swiper-pagination-bullet:last-child {
+  margin-right: 0;
+}
+.notice .promotion .swiper-pagination .swiper-pagination-bullet-active {
+  background-image: url("../images/promotion_slide_pager_on.png");
+}
+.notice .promotion .swiper-prev,
+.notice .promotion .swiper-next {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 300px;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s;
+}
+.notice .promotion .swiper-prev {
+  left: 50%;
+  margin-left: -480px;
+}
+.notice .promotion .swiper-next {
+  right: 50%;
+  margin-right: -480px;
+}
+.notice .promotion .swiper-prev:hover,
+.notice .promotion .swiper-next:hover {
+  background-color: #333;
+  color: #fff;
 }
