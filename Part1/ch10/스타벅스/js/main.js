@@ -19,6 +19,7 @@ searchInputEl.addEventListener('blur', function(){
 
 
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 
 window.addEventListener('scroll', _.throttle(function(){
   console.log(window.scrollY);
@@ -29,15 +30,29 @@ window.addEventListener('scroll', _.throttle(function(){
       opacity: 0,
       display: 'none'
     });
+    // 버튼 보이기
+    gsap.to(toTopEl, .2, {
+      x: 0
+    });
   } else {
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display: 'block'
     });
+    // 버튼 숨기기
+    gsap.to(toTopEl, .2, {
+      x: 100
+    });
   }
 }, 300));
 // _.throttle(함수, 시간(ms)
 
+
+toTopEl.addEventListener('click', function(){
+  gsap.to(window, .7, {
+    scrollTo: 0
+  });
+});
 
 const fadeEls = document.querySelectorAll('.visual .fade-in');
 fadeEls.forEach(function (fadeEl, index) {
@@ -75,6 +90,19 @@ new Swiper('.notice-line .swiper-container', {
     nextEl:'.promotion .swiper-next'
   }
 });
+
+// 다중요소 슬라이더
+new Swiper('.awards .swiper-container', {
+  // direction: 'horizontal', 수평 슬라이더 만들기 // 기본값이어서 생략
+  autoplay: true,
+  loop: true,
+  spaceBetween: 30,
+  slidesPerView: 5,
+  navigation: {
+    prevEl: 'awards .swiper-prev',
+    nextEl: 'awards .swiper-next'
+  }
+})
 
 
 const promotionEl = document.querySelector('.promotion');
@@ -114,3 +142,19 @@ function floatingObject (selector, delay, size) {
  floatingObject('.floating1', 1, 15);
  floatingObject('.floating2', .5, 15);
  floatingObject('.floating3', 1.5, 20);
+
+
+ // 섹션 이미지 요소들 움직임 제어
+ const spyEls = document.querySelectorAll('section.scroll-spy')
+ spyEls.forEach(function(spyEl){
+  new ScrollMagic
+    .Scene({
+      triggerElement: spyEl, //보여짐의 여부를 감시할 요소를 지정
+      triggerHook: .8
+    })
+    .setClassToggle(spyEl, 'show')
+    .addTo(new ScrollMagic.Controller());
+ });
+
+ const thisYear = document.querySelector('.this-year');
+ thisYear.textContent = new Date().getFullYear(); // 해당연도의 숫자가 this-year에 들어간다
