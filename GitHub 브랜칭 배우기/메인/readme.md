@@ -21,12 +21,19 @@
 ## git 합치기 (merge)
 
 - 두개의 브랜치를 만든다
+
 ![변환](./%20git%20merge1.png)
+
 - 두개의 별도의 브랜치를 합친다
+
 ![변환](./git%20merge2.png)
+
 - git merge bugFix
+
 ![변환](./git%20merge3.png)
+
 - git checkout bugFix; git merge main
+
 ![변환](./git%20merge4.png)
 
 ![변환](./merge.png)
@@ -34,10 +41,15 @@
 ## git 합치기 (rebase)
 
 - 커밋들을 모아서 복사한 후 다른 장소에 둔다.
+
 ![변환](./gitrebase2.png)
+
 - git rebase main
+
 ![변환](./gitrebase.png)
+
 - git rebase bugFix
+
 ![변환](./gitrebase1.png)
 
 ## HEAD 분리하기
@@ -45,6 +57,7 @@
 - HEAD 는 현재 checkout된 커밋 즉, 현재 작업 중인 커밋
 
 - git checkout c1
+
 <figure class="half" >
   <a href="./HEAD1.png"><img src="./HEAD1.png"></a>
   <a href="./HEAD2.png"><img src="./HEAD2.png"></a>
