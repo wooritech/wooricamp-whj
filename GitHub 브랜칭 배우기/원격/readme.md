@@ -16,6 +16,7 @@
 - 원격 저장소에서 데이터 가져오기
 
 - fetch가 하는 일
+
 ```
 1.원격 저장소에서 로컬에 없는 커밋들 가져오기
 2.원격 브랜치가 가르키는곳 업데이트
@@ -30,6 +31,7 @@
 - fetch(원격 데이터 가져오기)와 merge(병합)의 기능을 한번에 제공
 
 - git fetch; git merge o/main 는 git pull과 동일한 작업을 한다
+
 ![변경](./pull1.png)
 ![변경](./pull2.png)
 
@@ -39,6 +41,7 @@
 - git fakeTeamwork 브랜치명 추가할 커밋의 갯수
 
 - git fakeTeamwork foo 3
+
 ![변경](./fake1.png)
 ![변경](./fake2.png)
 
