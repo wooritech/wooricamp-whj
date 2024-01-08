@@ -78,4 +78,7 @@
 - git revert
   - 동명'의 새로운 커밋이 생성되고 변경내용이 기록된다.
 
+- git reset --hard ORIG_HEAD
+  - reset 전으로 되돌리기 (바로 이전 작업 한번만 가능하다)
+
 ![변환](./reset.png)
