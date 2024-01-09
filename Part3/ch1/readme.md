@@ -1,6 +1,12 @@
 # JavaScript Essentials
 
-## nvm, node.js 설치
+## node.js
+
+javascript가 서버에서 동작 할 수 있도록 하는 플랫폼
+
+## nvm (Node Version Manager)
+
+### node.js의 버전 관리자
 
 - nvm 검색후 첫번쨰 github
 - install & update script에서 curl 코드 복사 vscode 터미널에 붙여넣기 후 엔터
@@ -11,7 +17,7 @@ zsh command not found nvm라는 에러가 나올 경우
 - 설치된 버전 확인 후 nvm ls 엔터
 - nvm install (node.js에서 설치할 버전 엔터)
 
-## npm
+## npm (Node Pachage Manger)
 
 - Node Package Manager
 - 전세계의 개발자들이 만든 다양한 기능들을 관리
