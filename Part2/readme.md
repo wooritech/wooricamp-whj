@@ -13,4 +13,7 @@
 - code . -r
   - 폴더 현재 창에 열기
 
-  # 버전 되돌리기
+  # .gitignore
+
+  - vscode에서 작성한 내용중 github에 올리지 않은 내용을 선택해서 작성
+  - gitignore.io를 활용해서 작성 가능
