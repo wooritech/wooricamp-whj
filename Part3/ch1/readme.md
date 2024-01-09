@@ -37,7 +37,8 @@ node_modules를 삭제해도 설치한 내역은 남는다.
 - package-lock.json은 설치한 패키지들을 관리하는 패키지들의 정보가 들어간다.
 
 ```
-- npm install -D 개발용 의존성 패키지 설치->개발할 떄만 필요
+- npm install -D 개발용 의존성 패키지 설치->개발할 떄만 필요  
+-D 는 --save-dev의 약어
 - npm intall 일반 의존성 설치->실제로 웹사이트에서 동작
 ```
 
