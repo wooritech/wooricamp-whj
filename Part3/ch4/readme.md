@@ -55,3 +55,24 @@ setTimeout을 사용할 경우
 
 <img src="./arrow1.png" width="500" height="250">
 <img src="./arrow2.png" width="500" height="250">
+
+## ES6
+
+객체 데이터 내부에서 일반 함수를 사용할 경우에는 : funchion을 삭제해도 기능한다.  
+
+코드를 간결하고 생산적으로 작성하기 위해서 사용된다.  
+
+ES6 미적용 형식 |  ES6 적용 형식
+<img src="./es61.png" width="250" height="250"> | <img src="./es62.png" width="250" height="250">
+---|---|
+
+결과
+<img src="./es63.png" width="500" height="250">
+
+## 확장(상속)
+
+<u>extends 키워드</u>
+
+기존에 존재했던 클래스의 기능을 새로운 클래스에서 받아쓰는것
+
+![확장](./inheritance.png)
