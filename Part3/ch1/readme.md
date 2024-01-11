@@ -6,7 +6,9 @@ javascript가 서버에서 동작 할 수 있도록 하는 플랫폼
 
 ## nvm (Node Version Manager)
 
-### node.js의 버전 관리자
+- node.js의 버전 관리자
+
+### nvm 시작하기
 
 - nvm 검색후 첫번쨰 github
 - install & update script에서 curl 코드 복사 vscode 터미널에 붙여넣기 후 엔터
