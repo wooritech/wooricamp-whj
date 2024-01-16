@@ -32,6 +32,24 @@ export
 
 lodash는 js의 라이블러리 중 하나로 데이터의 구조를 함수형으로 다룰 수 있게 하기 위해 만들어졌다.  
 _기호를 선언하여 사용된다.  
+배열 안의 내용들이 반복될때 코드를 줄여줄때 유용하게 사용된다.  
+브라우저에서 지원하지 않는 성능이 보장되는 메소드를 지원한다. [메소드](https://velog.io/@kysung95/%EC%A7%A4%EB%A7%89%EA%B8%80-lodash-%EC%95%8C%EA%B3%A0-%EC%93%B0%EC%9E%90)
+- 배열(array)관련 메소드(methiod)
+  메소드명 | 기능
+  --|--
+  findindex()|배열 내부에서 원하는 index 찾기
+  flatten()|다차원 배열 내의 요소 출력
+  remove()|배열 내부의 조건에 맞는 요소 제거
+
+- collection 관련 method
+  메소드명|기능
+  --|--
+  every()|배열 내부 요소들의 값을 비교
+  find()|조건을 만족하는 첫번째 요소 찾기
+  filter()|조건을 만족하는 모든 요소 찾기
+  map()|계산 결과를 배열로 반환. key값을 입력할 경우 해당 key값만 반환
+  forEach()|배열의 값마다 함수를 실행
+  includes()|collection의 값이 target값인지 판별
 
 lodash의 설치
 - 먼저 만들어둔 package.json에 추가 하기위해 터미널에서 npm install lodash를 입력한다.
