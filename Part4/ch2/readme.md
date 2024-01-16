@@ -72,7 +72,8 @@ console.log(foundUserIndex)
 _.remove(users, { nameing: 'Heropy'})//객체 제거
 console.log(users)
 ```
-![로대시](./lodash1.png)
+
+![로대시](./lodash.png)
 
 ## JSON (Java Script Object Notation)
 
