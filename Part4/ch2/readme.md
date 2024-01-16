@@ -85,13 +85,21 @@ console.log(users)
 import로 가져와져서 객체 데이터처럼 사용된다.  
 nudefined 사용 불가하다.  
 컴퓨터 프로그램의 변수값을 표현하는데 유용하다.  
-js에서 전역 객체로 사용 할 수 있다.  
 
-JSON.parse: js 형태로 변경
+JSON: js에서 지정되어있기 때문에 전역 객체로 사용 할 수 있다.  
+parse: js 형태로 변경
 stringify: js 내부에서 특정 데이터를 json의 포맷으로 문자 데이터화 시켜주는 메소드
+
+```js
+import json-name from './json-name.json'//json 가져오기/확장자명 필수로 작성
+...
+const str = JSON.stringify() // 문자 데이터화
+const obj = JSON.parse() // 문자 데이터를 js 데이터화
+```
 
 ## storage
 
+작업 정보를 잠깐 저장하는 저장 공간
 키와 값은 문자열이여야 한다.  
 파기되지 않는다.  
 오리진(도메인, 프로토콜)에 묶여있습니다.
@@ -110,7 +118,7 @@ stringify: js 내부에서 특정 데이터를 json의 포맷으로 문자 데�
 오리진이 같은 브라우저 탭에서 공유됩니다.  
 페이지를 새로 고침해도 남아있습니다. 하지만 탭이나 브라우저를 종료하면 사라집니다.
 
-### 인스턴스 메소드
+### 메소드
 
 - setItem(key, value) 키와 값을 쌍으로 보관합니다.
 - getItem(key) 키에 해당하는 값을 받아옵니다.
