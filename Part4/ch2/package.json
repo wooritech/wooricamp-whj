@@ -4,13 +4,16 @@
   "description": "## import, export",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel index.html"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
   "dependencies": {
-    "lodash": "^4.17.21",
-    "parcel": "^2.11.0"
+    "axios": "^1.6.5",
+    "lodash": "^4.17.21"
   }
 }

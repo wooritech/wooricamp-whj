@@ -316,7 +316,9 @@ console.log('copyUser', copyUser)
 
 ### 깊은 복사
 
-객체의 실제값을 복사
+객체의 실제값을 복사  
+복사에 의한 값의 변경의 방지
+
 ```js
 import _ from 'lodash'
 
