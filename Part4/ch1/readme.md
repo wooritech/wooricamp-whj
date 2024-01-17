@@ -140,7 +140,7 @@ indexOf, lastIndexOf, findIndex
 
 ### includes()
 
-배열 데이터 부분에 includes의 인수로 사용된 데이터가 포함되어있는지 확인해주는 메소드
+배열 데이터 부분에 includes의 인수로 사용된 데이터가 포함되어있는지 확인해서 불린으로 나타내는 메소드
 
 ![인클루즈](./includes.png)
 
@@ -266,7 +266,7 @@ console.log(a, b, a === b)
 let c = 1 //c에 할당된 1이 기존 메모리에 있는 데이터 1을 바라본다.
 console.log(b, c, b === c) // 데이터의 불변성 (기존의 데이터는 변하지 않는다.)
 ```
-|1: 1   |2: 4   |: 7   |:
+|1: 1   |2: 4   |3: 7   |:
 
 
 참조형 데이터 = object {}, array[], function 콜백  
