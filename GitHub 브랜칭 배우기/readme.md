@@ -89,7 +89,7 @@ git과 로컬이 동기화 되지않아서 발생
   1. git pull 실행후 다시 push
   2. git pull --rebase origin master
 
-#### git push --set-upstrean origin main
+#### fatal: The current branch master has no upstream branch.
 
 원격 저장소에 기본 branch 설정을 안해서 발생
   1. 브랜치 설정 후 다시 푸시
@@ -98,6 +98,8 @@ git과 로컬이 동기화 되지않아서 발생
   2. remote 명시
   - git remote -v로 원격 저장소 이름을 찾은뒤
   - git push 저장소명 main
+
+
 
 #### 내 해결 방법
 
