@@ -71,6 +71,38 @@ github 주소와 연결 
 현재 브랜치에 다른 브랜치 수정사항 병합
 - git merge [다른 브랜치 이름]
 
+## 에러와 해결
+
+### git push 에러
+
+#### 레퍼런스 푸시 실패
+
+git init 후 add와 commit을 안하고 push한 경우 발생
+  1. git checkout master(브랜치 명 변경)  
+    git pull origin master
+  2. 강제 푸시
+  - git push -u origin +master
+
+#### error:failed to ~~~ hintx4
+
+git과 로컬이 동기화 되지않아서 발생
+  1. git pull 실행후 다시 push
+  2. git pull --rebase origin master
+
+#### git push --set-upstrean origin main
+
+원격 저장소에 기본 branch 설정을 안해서 발생
+  1. 브랜치 설정 후 다시 푸시
+  - git push --set-upstrean origin main
+  - git push
+  2. remote 명시
+  - git remote -v로 원격 저장소 이름을 찾은뒤
+  - git push 저장소명 main
+
+#### 내 해결 방법
+
+파일을 다시 만들어서 푸시
+
 # npm
 
 npm init  
