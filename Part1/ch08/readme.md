@@ -167,7 +167,12 @@
     - 숫자 높을 수록 위에 쌓임 (음수 사용가능)
   - position의 값으로 absolute, fixed이 지정된 요소는, display 속성이 block으로 변경된다.
 
-  # 플렉스
+## justify-content
+
+![Alt text](image.png)
+
+# 플렉스
+
   - display
     - flex 요소 수평정렬, 컨테이너 수직정렬
     - inline-flex 요소 수직정렬, 컨테이너 수직정렬
