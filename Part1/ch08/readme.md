@@ -169,7 +169,7 @@
 
 ## justify-content
 
-![Alt text](image.png)
+![Alt text](./image.png)
 
 # 플렉스
 
