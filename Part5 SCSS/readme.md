@@ -10,7 +10,7 @@
   - "dev": "parcel index.html",
   - "build": "parcel build index.html"
 
-## sass 문법이 기존의 cs와 호완이 안되는 문제를 해결하기 위해서 SCSS 문법을 새로 만들었다.
+## sass 문법이 기존의 css와 호완이 안되는 문제를 해결하기 위해서 SCSS 문법을 새로 만들었다.
 
 - sass와 scss의 문법적 차이
 
