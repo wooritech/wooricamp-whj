@@ -140,3 +140,4 @@ module.exports = {
   6. 깃허브에서 저장소 생성, 저장소 주소 복사
   7. git remote add origin 주소
   8. git push origin master
+  
