@@ -130,8 +130,16 @@ module.exports = {
 
 ### 저장소 업로드
 
+- .gitignore 작성
+- git git 연결하기
+  1. git init
+  2. git status
+  3. git add .
+  4. git status
+  5. git commit -m 'Create project'
+  6. 깃허브에서 저장소 생성, 저장소 주소 복사
+  7. git remote add origin 주소
+  8. git push origin master
 
-
-## Webpack
 
  
