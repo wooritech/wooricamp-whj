@@ -62,3 +62,7 @@ function App() {
 https://velog.io/@junmieee_/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B0%80-%EA%B7%B8%EB%A0%A4%EC%A7%80%EB%8A%94-%EC%9B%90%EB%A6%AC-%EB%B0%8F-%EA%B0%80%EC%83%81%EB%8F%94
 
 https://velog.io/@so960225/%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EA%B0%80-%EA%B7%B8%EB%A0%A4%EC%A7%80%EB%8A%94-%EC%9B%90%EB%A6%AC%EC%99%80-%EA%B0%80%EC%83%81%EB%8F%94
+
+### 리액트 설치
+
+- npx create-react-app ./
