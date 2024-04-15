@@ -138,3 +138,69 @@ funtion hello() {
     </div>;
 }
 ```
+
+### ES7 React
+
+- 스니펫(snippet) 제공
+  - 재사용 가능한 소스 코드
+
+- rce => 클래스 컴포넌트 생성
+- rcc => 클래스 컴포넌트 생성
+- rfce => 함수형 컴포넌트 생성
+
+## 리액트 계산기 앱 만들기
+
+- 부모 컴포넌트에서 자식 컴포넌트로 정보를 전달할 때는 props를 이용 한다.
+
+```js
+//부모(APpp)에서 자식(ExpenseList)으로 보낼때
+<ExpenseList
+  initialExpenses={this.initialExpenses}
+/>
+//자식(ExpenseList)이 부모에게서 전달 받을때
+export class ExpenseList extends Component {
+  render() {
+    console.log(this.props.initialExpenses);
+  }
+}
+```
+
+### map 메소드를 사용한 지출 목록 나열
+
+- map() 메소드란?
+  - 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환한다.
+
+- JSX의 key 속성
+  - 리액트에서 요소의 리스트를 나열할 때 Key를 넣어줘야합니다.
+  - 키는 리액트가 변경, 추가 또는 제거된 항목을 식별하는데 도움이 됩니다.
+  - key에는 유니크한 값을 넣어줘야 한다 (index는 비추천: 리스트가 추가 되거나 제거되면 해당 리스트들의 key값이 바뀌게 된다)
+
+### 버튼 클릭시 상호작용하기
+
+```js
+<button 
+className='clear-btn' onClick={() =>
+console.log(`${this.props.expense.id} clicked`)}>
+<MdDelete/>
+</button>
+```
+### 클릭이벤트 발생시 함수 호출하기
+
+```js
+//
+<butten
+  className="clear-btn"
+  onClick={() => 지우는 함수 호출 (this.props,expense.id)}
+>
+<MdDelete/>
+</butten>
+```
+
+### filter 메소드
+
+- 주어진 함수의 테스트를 통과한 모든 요소를 모아 새로운 배열로 반환합니다.
+
+### React State
+
+- 컴포넌트의 렌더링 결과물에 영향을 주는 데이터를 가지고있는 객체
+- State 생성하기
