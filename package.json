@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "parcel-bundler": "^1.12.5"
+    "parcel-bundler": "^1.12.5",
+    "ts-node": "^10.9.2"
   },
   "name": "wooricamp-whj",
   "version": "1.0.0",
@@ -568,7 +569,9 @@
     "yallist": "^3.1.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "1406": "ts-node ./back_joon/1406/1406.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postbuild:nation": "ts-node ./src/nation/postScript.ts"
   },
   "keywords": [],
   "author": "",
