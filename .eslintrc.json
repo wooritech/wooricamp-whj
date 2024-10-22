@@ -4,7 +4,6 @@
     "es2017": true,
     "node": true
   },
-  "eslintConfig": {
     "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
@@ -15,10 +14,8 @@
       // 여기에 override 설정이 필요할 경우 추가
     ],
     "rules": {
-      "object-curly-newline": 0
-    },
-    "env": {
-      "browser": true
+      "object-curly-newline": 0,
+      "no-unused-vars":"error",
+      "prefer-const":"error"
     }
-  }
 }
