@@ -1,21 +1,19 @@
 {
-  "env": {
-    "browser": true,
-    "es2017": true,
-    "node": true
-  },
+    "env": {
+        "browser": true,
+        "es2017": true,
+        "node": true
+    },
     "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:prettier/recommended"
-    ],
-    "overrides": [
-      // 여기에 override 설정이 필요할 경우 추가
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        // "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:prettier/recommended"
     ],
     "rules": {
-      "object-curly-newline": 0,
-      "no-unused-vars":"error",
-      "prefer-const":"error"
+        "object-curly-newline": 0,
+        "no-unused-vars": "error",
+        "prefer-const": "error",
+        "quotes": ["error", "single"]
     }
 }
