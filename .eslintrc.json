@@ -15,7 +15,6 @@
         "ecmaVersion": 2020
     },
     "rules": {
-        "object-curly-newline": 0,
         "no-unused-vars": "error",
         "prefer-const": "error",
         "quotes": ["error", "single"]

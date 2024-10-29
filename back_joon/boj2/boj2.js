@@ -22,7 +22,7 @@ function sum() {
  */
 function reverse() {
     // 가져온 예제 testCases2의 길이 많큼 반복한다.
-    for (i = 0; i < testCases2.length; i++) {
+    for (i = 1; i < testCases2.length; i++) {
         const sentence = testCases2[i];
         const reverse = sentence
             // 문장을 ' '을 기준으로 나눈다.
