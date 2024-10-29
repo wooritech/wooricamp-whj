@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "es2017": true,
-        "node": true
+        "node": true,
+        "es6": true
     },
     "extends": [
         "eslint:recommended",
@@ -10,6 +11,9 @@
         // "plugin:@typescript-eslint/eslint-recommended",
         "plugin:prettier/recommended"
     ],
+    "parserOptions": {
+        "ecmaVersion": 2020
+    },
     "rules": {
         "object-curly-newline": 0,
         "no-unused-vars": "error",

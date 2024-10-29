@@ -17,6 +17,8 @@ function sum() {
 /**
  * 백준 9093번 문제
  * 문장의 단어들의 위치는 유지하면서 단어를 구성하는 알파벳의 순번을 뒤집는 코드
+ * 예) 원문  I am happy today
+ * 		결과  I ma yppah yadot
  */
 function reverse() {
     // 가져온 예제 testCases2의 길이 많큼 반복한다.
@@ -35,3 +37,5 @@ function reverse() {
 
 sum();
 reverse();
+
+let a = 10;

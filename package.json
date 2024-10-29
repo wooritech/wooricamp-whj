@@ -572,7 +572,7 @@
         "1406": "node ./back_joon/1406/1406.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "_comment": "Prettier 호출, 포맷팅 결과 원본에 적용, '모든 하위, 파일 이름 상관없이, {적용시킬 파일 종류}'",
-        "format": "prettier --write 'back_joon/**/*.{js,ts,json,md}'",
+        "format": "prettier --write './back_joon/**/*.{js,ts,json,md}'",
         "boj2": "node ./back_joon/boj2/boj2.js"
     },
     "keywords": [],
