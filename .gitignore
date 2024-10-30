@@ -145,4 +145,4 @@ dist
 
 .prettierrc.json 
 package.json
-.eslintrc.json
+.eslint.config.mjs

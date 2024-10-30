@@ -6,8 +6,8 @@ const testCases1 = [
     [5, 2],
     [9, 9], // 조건 내 최대값
     [-1, -5], // 음수
-		[100, 999], // 조건 초과
-		[1.11, 3.2] // 소수점
+    [100, 999], // 조건 초과
+    [1.11, 3.2], // 소수점
 ];
 
 const testCases2 = [
@@ -22,7 +22,7 @@ const testCases2 = [
     'qwertyuiopasdfghjklzxcvbnm', // 단어 길이 제한 초과
 ];
 
-module.exports = {
+export default {
     testCases1,
     testCases2,
 };

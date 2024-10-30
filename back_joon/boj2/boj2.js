@@ -1,5 +1,5 @@
-const fs = require('fs');
-const { testCases1, testCases2 } = require('./boj2.spec');
+import testCases from './boj2.spec.js';
+const { testCases1, testCases2 } = testCases;
 
 /**
  * 백준 10951번 문제
@@ -7,10 +7,10 @@ const { testCases1, testCases2 } = require('./boj2.spec');
  */
 function sum() {
     // 가져온 예제 testCases1의 길이 많큼 반복한다.
-    for (i = 0; i < testCases1.length; i++) {
+    for (let i = 0; i < testCases1.length; i++) {
         // 배열 비구조화 할당을 사용하여
         // testCases1의 각각의 배열에 들어가있는 숫자를 A와 B에 대입 시킨다.
-        let [A, B] = testCases1[i];
+        const [A, B] = testCases1[i];
         console.log(A + B);
     }
 }
@@ -24,7 +24,7 @@ function sum() {
 function reverse() {
     // 가져온 예제 testCases2의 길이 많큼 반복한다.
     // i가 1부터 시작하는 이유는 배열의 첫번째 요소는 문자열의 개수를 나타내는 숫자고 출력되지 않기 때문이다.
-    for (i = 1; i < testCases2.length; i++) {
+    for (let i = 1; i < testCases2.length; i++) {
         // testCases2의 i번째 배열의 문장을 sentence라는 변수에 넣는다.
         const sentence = testCases2[i];
         const reverse = sentence
@@ -40,5 +40,3 @@ function reverse() {
 
 sum();
 reverse();
-
-let a = 10;
