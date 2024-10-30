@@ -16,7 +16,6 @@
     },
     "rules": {
         "no-unused-vars": "error",
-        "prefer-const": "error",
-        "quotes": ["error", "single"]
+        "prefer-const": "error"
     }
 }
