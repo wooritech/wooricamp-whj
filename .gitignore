@@ -144,5 +144,4 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/node
 
 .prettierrc.json 
-package.json
 .eslint.config.mjs
