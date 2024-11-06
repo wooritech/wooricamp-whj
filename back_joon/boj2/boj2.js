@@ -84,3 +84,4 @@ function reverse2(testCases2) {
     return results;
 }
 reverse2(testCases2).forEach((results) => console.log(results));
+ 
