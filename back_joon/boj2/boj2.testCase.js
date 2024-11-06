@@ -1,4 +1,4 @@
-const testCases1 = [
+export const testCases1 = [
     [1, 1],
     [2, 3],
     [3, 4],
@@ -10,7 +10,7 @@ const testCases1 = [
     [1.11, 3.2], // 소수점
 ];
 
-const testCases2 = [
+export const testCases2 = [
     '8',
     'I am happy today',
     'We want to win the first prize',
@@ -22,7 +22,3 @@ const testCases2 = [
     'qwertyuiopasdfghjklzxcvbnm', // 단어 길이 제한 초과
 ];
 
-export default {
-    testCases1,
-    testCases2,
-};
