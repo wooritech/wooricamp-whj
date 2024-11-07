@@ -15,7 +15,7 @@
     "test": "jest",
     "_comment": "Prettier 호출, 포맷팅 결과 원본에 적용, '모든 하위, 파일 이름 상관없이, {적용시킬 파일 종류}'",
     "format": "prettier --write './back_joon/**/*.{js,ts,json,md}'",
-    "boj2": "node ./back_joon/boj2/boj2.js"
+    "boj": "node ./back_joon/10951/boj1.js && node ./back_joon/9093/boj2.js"
   },
   "keywords": [],
   "author": "",
