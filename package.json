@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@playwright/test": "^1.48.2",
+    "@types/node": "^22.9.0",
     "parcel-bundler": "^1.12.5",
     "ts-node": "^10.9.2"
   },
@@ -570,7 +572,6 @@
   },
   "scripts": {
     "1406": "ts-node ./back_joon/1406/1406.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postbuild:nation": "ts-node ./src/nation/postScript.ts"
   },
   "keywords": [],
