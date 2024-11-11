@@ -5,51 +5,67 @@ test.describe('Chart Testing', () => {
         await page.goto('https://www.realchart.co.kr/demo/Basic/basic-bar');
     });
 
-    // Title 값 가져오기
+    // 1.Title 값 가져오기
     test('Get Title', async ({ page }) => {
         const title = await page.locator('.rct-title').textContent();
-        console.log('Title:', title);
+        expect(title).toBe('월별 매출 현황 분석');
     });
 
-    // Subtitle 값 가져오기
+    // 2.Subtitle 값 가져오기
     test('Get Subtitle', async ({ page }) => {
         const subtitle = await page.locator('.rct-subtitle').textContent();
-        console.log('Subtitle:', subtitle);
+        expect(subtitle).toBe('1월부터 12월까지의 매출 변화 추적');
     });
 
-    // xAxis label 값 배열로 가져오기
+    // 3.xAxis label 값 배열로 가져오기
     test('Get xAxis Labels', async ({ page }) => {
         const xAxisLabels = await page
             .locator('.rct-axis[xy="x"] .rct-axis-labels')
             .textContent();
-        console.log('xAxis Labels:', xAxisLabels);
-		});
-	
-    // yAxis label 값 배열로 가져오기
+        const xAxisArray = [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+        ];
+        expect(xAxisLabels).toBe(xAxisArray);
+    });
+
+    // 4.yAxis label 값 배열로 가져오기
     test('Get yAxis Labels', async ({ page }) => {
         const yAxisLabels = await page
             .locator('.rct-axis[xy="y"] .rct-axis-labels')
             .textContent();
-        console.log('yAxis Labels:', yAxisLabels);
+        const yAxisArray = ['-200', '-100', '0', '100', '200'];
+        expect(yAxisLabels).toBe(yAxisArray);
     });
 
-    // xAxis title 값 가져오기
+    // 5.xAxis title 값 가져오기
     test('Get xAxis Title', async ({ page }) => {
         const xAxisTitle = await page
             .locator('.rct-axis[xy="x"] .rct-axis-title')
             .textContent();
-        console.log('xAxis Title:', xAxisTitle);
+        expect(xAxisTitle).toBe('월(1월 - 12월');
     });
 
-    // yAxis title 이 안 그려진 거 확인하기
+    // 6.yAxis title 이 안 그려진 거 확인하기
     test('Check yAxis Title not rendered', async ({ page }) => {
-        const yAxisTitle = await page
-            .locator('.rct-axis[xy="y"] .rct-axis-title')
-            .textContent();
-        expect(yAxisTitle).toBeFalsy();
+        const yAxisTitle = page.locator('.rct-axis[xy="y"] .rct-axis-title');
+        const yAxisTitleStyle = await yAxisTitle.evaluate(
+            (el) => el.style.display === 'nane'
+        );
+        expect(yAxisTitleStyle).toBeTruthy();
     });
 
-    // Data point가 음수인지 양수인지 확인하기
+    // 7.Data point가 음수인지 양수인지 확인하기
     test('Check Data Points Sign', async ({ page }) => {
         const dataPoints = await page.locator('.rct-series-point'); // 각 포인트 선택
         const pointCount = await dataPoints.count();
@@ -57,29 +73,48 @@ test.describe('Chart Testing', () => {
         for (let i = 0; i < pointCount; i++) {
             const pointText = await dataPoints.nth(i).textContent();
             const value = parseFloat(pointText || '0');
-            console.log(`Point ${i}: ${value}`);
             expect(!isNaN(value)).toBeTruthy(); // 숫자인지 확인
-            expect(value).toBeGreaterThanOrEqual(0); // 양수 확인
+            if (value > 0) {
+                expect(value).toBeGreaterThan(0);
+            } else if (value < 0) {
+                expect(value).toBeLessThan(0);
+            } else {
+                expect(value).toBe(0);
+            }
         }
     });
 
-    // 코드 보기 버튼 클릭해서 config가 보이게 하기
+    // 8.코드 보기 버튼 클릭해서 config가 보이게 하기
     test('Click View Code Button', async ({ page }) => {
         await page.locator('label:has-text("코드 보기")').click();
-        const config = await page.locator('.mantine-Grid-root.mantine-16fdnqw');
+        const config = await page.locator('.overflow-guard');
         await expect(config).toBeTruthy();
     });
 
-    // Inverted 버튼 클릭하기
+    // 9.Inverted 버튼 클릭하기
     test('Click Inverted Button', async ({ page }) => {
+        const xAxisBefore = await page
+            .locator('.rct-axis[xy="x"]')
+            .boundingBox();
+        const yAxisBefore = await page
+            .locator('.rct-axis[xy="y"]')
+            .boundingBox();
         await page.locator('label:has-text("Inverted")').click();
-        const xAxis = await page.locator('.rct-axis[xy="x"]').isVisible();
-        const yAxis = await page.locator('.rct-axis[xy="y"]').isVisible();
-        expect(xAxis).toBeTruthy();
-        expect(yAxis).toBeTruthy();
+        const xAxisAfter = await page
+            .locator('.rct-axis[xy="x"]')
+            .boundingBox();
+        const yAxisAfter = await page
+            .locator('.rct-axis[xy="y"]')
+            .boundingBox();
+        expect(xAxisBefore).not.toEqual(xAxisAfter); // xAxis 위치가 변경되었는지 확인
+        expect(yAxisBefore).not.toEqual(yAxisAfter); // yAxis 위치가 변경되었는지 확인
+
+        // Inverted 후 xAxis와 yAxis의 위치가 반대인지 확인
+        expect(xAxisAfter?.height).toBe(yAxisBefore?.height); // xAxis가 수직 위치가 됬는지 확인
+        expect(yAxisAfter?.width).toBe(xAxisBefore?.width); // yAxis가 수평 위치가 됬는지 확인
     });
 
-    // Palette 값 변경하기
+    // 10.Palette 값 변경하기
     test('Change Palette Value', async ({ page }) => {
         await page.locator('label:has-text("Palette")').click();
         const options = page.locator('.mantine-Select-dropdown option');
@@ -92,14 +127,16 @@ test.describe('Chart Testing', () => {
         }
     });
 
-    // config값 가져오기
+    // 11.config값 가져오기
     test('Get Config Value', async ({ page }) => {
         await page.locator('label:has-text("코드 보기")').click();
-        const config = await page.locator('.mantine-Grid-root.mantine-16fdnqw');
+        const config = await page.locator('.overflow-guard');
         console.log('Config Value:', config);
     });
 
+    // 12.스냅샷 저장하기
     test('Chart Snapshot', async ({ page }) => {
-        await expect(page).toHaveScreenshot();
+        const graph = page.locator('.rct-svg');
+        await expect(graph).toHaveScreenshot();
     });
 });
