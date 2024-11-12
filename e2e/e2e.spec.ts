@@ -126,12 +126,13 @@ test.describe('Chart Testing', () => {
             console.log(`Selected Palette ${i + 1}:`, selectedPalette);
         }
     });
-    //.mantine-j9797q
 
     // 11.config값 가져오기
     test('Get Config Value', async ({ page }) => {
         await page.locator('label:has-text("코드 보기")').click();
-        const config = page.locator('.overflow-guard');
+        const config = page.locator(
+            '.overflow-guard .monaco-scrollable-element .view-lines'
+        );
         console.log(config.textContent);
     });
 
