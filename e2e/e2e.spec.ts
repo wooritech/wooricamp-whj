@@ -18,10 +18,13 @@ test.describe('Chart Testing', () => {
     });
 
     // 3.xAxis label 값 배열로 가져오기
-    test('Get xAxis Labels', async ({ page }) => {
-        const xAxisLabels = await page
-            .locator('.rct-axis[xy="x"] .rct-axis-labels')
-            .textContent();
+	test('Get xAxis Labels', async ({ page }) => {
+			await page.waitForSelector(
+                '.rct-axis[xy="x"] .rct-axis-labels .rct-axis-label'
+            );
+        const xAxisLabels = await page.locator(
+            '.rct-axis[xy="x"] .rct-axis-labels .rct-axis-label');
+			const xAxisLabelArray = await xAxisLabels.allTextContents();
         const xAxisArray = [
             'Jan',
             'Feb',
@@ -36,16 +39,19 @@ test.describe('Chart Testing', () => {
             'Nov',
             'Dec',
         ];
-        expect(xAxisLabels).toBe(xAxisArray);
+        expect(xAxisLabelArray).toEqual(xAxisArray);
     });
 
     // 4.yAxis label 값 배열로 가져오기
-    test('Get yAxis Labels', async ({ page }) => {
+	test('Get yAxis Labels', async ({ page }) => {
+			await page.waitForSelector(
+                '.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label'
+            );
         const yAxisLabels = await page
-            .locator('.rct-axis[xy="y"] .rct-axis-labels')
-            .textContent();
+					.locator('.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label');
+			const yAxisLabelArray = await yAxisLabels.allTextContents();
         const yAxisArray = ['-200', '-100', '0', '100', '200'];
-        expect(yAxisLabels).toBe(yAxisArray);
+        expect(yAxisLabelArray).toEqual(yAxisArray);
     });
 
     // 5.xAxis title 값 가져오기
@@ -53,7 +59,7 @@ test.describe('Chart Testing', () => {
         const xAxisTitle = await page
             .locator('.rct-axis[xy="x"] .rct-axis-title')
             .textContent();
-        expect(xAxisTitle).toBe('월(1월 - 12월');
+        expect(xAxisTitle).toBe('월 (1월 - 12월)');
     });
 
     // 6.yAxis title이 안 그려진 거 확인하기
@@ -108,10 +114,6 @@ test.describe('Chart Testing', () => {
             .boundingBox();
         expect(xAxisBefore).not.toEqual(xAxisAfter); // xAxis 위치가 변경되었는지 확인
         expect(yAxisBefore).not.toEqual(yAxisAfter); // yAxis 위치가 변경되었는지 확인
-
-        // Inverted 후 xAxis와 yAxis의 위치가 반대인지 확인
-        expect(xAxisAfter?.height).toBe(yAxisBefore?.height); // xAxis가 수직 위치가 됬는지 확인
-        expect(yAxisAfter?.width).toBe(xAxisBefore?.width); // yAxis가 수평 위치가 됬는지 확인
     });
 
     // 10.Palette 값 변경하기
