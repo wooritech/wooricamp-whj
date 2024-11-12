@@ -56,11 +56,11 @@ test.describe('Chart Testing', () => {
         expect(xAxisTitle).toBe('월(1월 - 12월');
     });
 
-    // 6.yAxis title 이 안 그려진 거 확인하기
+    // 6.yAxis title이 안 그려진 거 확인하기
     test('Check yAxis Title not rendered', async ({ page }) => {
         const yAxisTitle = page.locator('.rct-axis[xy="y"] .rct-axis-title');
         const yAxisTitleStyle = await yAxisTitle.evaluate(
-            (el) => el.style.display === 'nane'
+            (el) => el.style.display === 'none'
         );
         expect(yAxisTitleStyle).toBeTruthy();
     });
@@ -86,9 +86,9 @@ test.describe('Chart Testing', () => {
 
     // 8.코드 보기 버튼 클릭해서 config가 보이게 하기
     test('Click View Code Button', async ({ page }) => {
-        await page.locator('label:has-text("코드 보기")').click();
-        const config = await page.locator('.overflow-guard');
-        await expect(config).toBeTruthy();
+        page.locator('label:has-text("코드 보기")').click();
+        const config = page.locator('.overflow-guard');
+        await expect(config).toBeVisible();
     });
 
     // 9.Inverted 버튼 클릭하기
@@ -126,12 +126,13 @@ test.describe('Chart Testing', () => {
             console.log(`Selected Palette ${i + 1}:`, selectedPalette);
         }
     });
+    //.mantine-j9797q
 
     // 11.config값 가져오기
     test('Get Config Value', async ({ page }) => {
         await page.locator('label:has-text("코드 보기")').click();
-        const config = await page.locator('.overflow-guard');
-        console.log('Config Value:', config);
+        const config = page.locator('.overflow-guard');
+        console.log(config.textContent);
     });
 
     // 12.스냅샷 저장하기
