@@ -75,32 +75,41 @@ test.describe('Chart Testing', () => {
 
     // 7.Data point가 음수인지 양수인지 확인하기
     test('Check Data Points Sign', async ({ page }) => {
-        const yAxisZeroPosition = await page.evaluate(() => {
-            const yAxisZeroLabel = Array.from(
-                document.querySelectorAll(
-                    '.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label tspan'
-                )
-            ).find((el) => el.textContent === '0'); // y축 0 기준선 잡기
-
-            if (!yAxisZeroLabel) throw new Error('Y-axis zero label not found');
-
-            // Y축 0 레이블 요소의 Y 좌표 반환
-            return yAxisZeroLabel.getBoundingClientRect().top;
+        // .rct-line 요소 중 세 번째 요소의 위치를 가져오기
+        const yAxisZeroLinePosition = await page.evaluate(() => {
+            const lines = document.querySelectorAll(
+                '.rct-axis-grid .rct-axis-grid-line'
+            ); // .rct 내부의 .rct-line 요소들 선택
+            const yAxisZeroLine = lines[2]; // 세 번째 .rct-line 요소 선택
+            return yAxisZeroLine.getBoundingClientRect().top;
         });
-        const dataPoints = await page.locator('.rct-series-point'); // 각 포인트 선택
+
+        // 각 데이터 포인트 가져오기
+        const dataPoints = await page.locator('.rct-point-label');
         const pointCount = await dataPoints.count();
 
+        // 각 데이터 포인트가 0 라인을 기준으로 위치하는지 검사
         for (let i = 0; i < pointCount; i++) {
+            // 각 데이터 포인트의 y 좌표 가져오기
             const pointYPosition = await dataPoints
                 .nth(i)
                 .evaluate((el) => el.getBoundingClientRect().top);
 
-            if (pointYPosition < yAxisZeroPosition) {
-                expect(pointYPosition).toBeLessThan(yAxisZeroPosition);
-            } else if (pointYPosition > yAxisZeroPosition) {
-                expect(pointYPosition).toBeGreaterThan(yAxisZeroPosition);
-            } else {
-                expect(pointYPosition).toBe(yAxisZeroPosition);
+            // 데이터 포인트의 값을 가져오기
+            const pointValueText = await dataPoints.nth(i).textContent();
+            const pointValue = parseFloat(pointValueText || '0');
+
+            // 값이 양수일 때 0 기준선 위에 있는지 확인
+            if (pointValue > 0) {
+                expect(pointYPosition).toBeLessThan(yAxisZeroLinePosition);
+            }
+            // 값이 음수일 때 0 기준선 아래에 있는지 확인
+            else if (pointValue < 0) {
+                expect(pointYPosition).toBeGreaterThan(yAxisZeroLinePosition);
+            }
+            // 값이 0일 때는 기준선과 같은 위치에 있는지 확인
+            else {
+                expect(pointYPosition).toBeCloseTo(yAxisZeroLinePosition, 1);
             }
         }
     });
@@ -139,7 +148,6 @@ test.describe('Chart Testing', () => {
         for (let i = 0; i < optionCount; i++) {
             await page.locator('label:has-text("Palette")').click();
             await options.nth(i).click();
-            await options.nth(i).textContent();
         }
     });
 
