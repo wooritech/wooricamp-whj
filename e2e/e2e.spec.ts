@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { delay } from 'q';
 
 test.describe('Chart Testing', () => {
     test.beforeEach(async ({ page }) => {
@@ -141,13 +142,16 @@ test.describe('Chart Testing', () => {
     });
 
     // 10.Palette 값 변경하기
-    test('Change Palette Value', async ({ page }) => {
-        const options = page.locator('.mantine-Select-dropdown option');
-        const optionCount = await options.count();
+    test('Change Palette Value1', async ({ page }) => {
+        const options = page.locator(
+            '.mantine-Select-dropdown .mantine-sacbkk'
+        );
         // 옵션 선택 반복 실행하기
-        for (let i = 0; i < optionCount; i++) {
-            await page.locator('label:has-text("Palette")').click();
+        for (let i = 0; i <= 6; i++) {
+            await page.locator('.mantine-Input-wrapper').click();
+            await page.waitForTimeout(300);
             await options.nth(i).click();
+            await page.waitForTimeout(300);
         }
     });
 
