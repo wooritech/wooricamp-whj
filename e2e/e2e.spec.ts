@@ -18,13 +18,14 @@ test.describe('Chart Testing', () => {
     });
 
     // 3.xAxis label 값 배열로 가져오기
-	test('Get xAxis Labels', async ({ page }) => {
-			await page.waitForSelector(
-                '.rct-axis[xy="x"] .rct-axis-labels .rct-axis-label'
-            );
+    test('Get xAxis Labels', async ({ page }) => {
+        await page.waitForSelector(
+            '.rct-axis[xy="x"] .rct-axis-labels .rct-axis-label'
+        );
         const xAxisLabels = await page.locator(
-            '.rct-axis[xy="x"] .rct-axis-labels .rct-axis-label');
-			const xAxisLabelArray = await xAxisLabels.allTextContents();
+            '.rct-axis[xy="x"] .rct-axis-labels .rct-axis-label'
+        );
+        const xAxisLabelArray = await xAxisLabels.allTextContents();
         const xAxisArray = [
             'Jan',
             'Feb',
@@ -43,13 +44,14 @@ test.describe('Chart Testing', () => {
     });
 
     // 4.yAxis label 값 배열로 가져오기
-	test('Get yAxis Labels', async ({ page }) => {
-			await page.waitForSelector(
-                '.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label'
-            );
-        const yAxisLabels = await page
-					.locator('.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label');
-			const yAxisLabelArray = await yAxisLabels.allTextContents();
+    test('Get yAxis Labels', async ({ page }) => {
+        await page.waitForSelector(
+            '.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label'
+        );
+        const yAxisLabels = await page.locator(
+            '.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label'
+        );
+        const yAxisLabelArray = await yAxisLabels.allTextContents();
         const yAxisArray = ['-200', '-100', '0', '100', '200'];
         expect(yAxisLabelArray).toEqual(yAxisArray);
     });
@@ -73,19 +75,32 @@ test.describe('Chart Testing', () => {
 
     // 7.Data point가 음수인지 양수인지 확인하기
     test('Check Data Points Sign', async ({ page }) => {
+        const yAxisZeroPosition = await page.evaluate(() => {
+            const yAxisZeroLabel = Array.from(
+                document.querySelectorAll(
+                    '.rct-axis[xy="y"] .rct-axis-labels .rct-axis-label tspan'
+                )
+            ).find((el) => el.textContent === '0'); // y축 0 기준선 잡기
+
+            if (!yAxisZeroLabel) throw new Error('Y-axis zero label not found');
+
+            // Y축 0 레이블 요소의 Y 좌표 반환
+            return yAxisZeroLabel.getBoundingClientRect().top;
+        });
         const dataPoints = await page.locator('.rct-series-point'); // 각 포인트 선택
         const pointCount = await dataPoints.count();
 
         for (let i = 0; i < pointCount; i++) {
-            const pointText = await dataPoints.nth(i).textContent();
-            const value = parseFloat(pointText || '0');
-            expect(!isNaN(value)).toBeTruthy(); // 숫자인지 확인
-            if (value > 0) {
-                expect(value).toBeGreaterThan(0);
-            } else if (value < 0) {
-                expect(value).toBeLessThan(0);
+            const pointYPosition = await dataPoints
+                .nth(i)
+                .evaluate((el) => el.getBoundingClientRect().top);
+
+            if (pointYPosition < yAxisZeroPosition) {
+                expect(pointYPosition).toBeLessThan(yAxisZeroPosition);
+            } else if (pointYPosition > yAxisZeroPosition) {
+                expect(pointYPosition).toBeGreaterThan(yAxisZeroPosition);
             } else {
-                expect(value).toBe(0);
+                expect(pointYPosition).toBe(yAxisZeroPosition);
             }
         }
     });
@@ -118,14 +133,13 @@ test.describe('Chart Testing', () => {
 
     // 10.Palette 값 변경하기
     test('Change Palette Value', async ({ page }) => {
-        await page.locator('label:has-text("Palette")').click();
         const options = page.locator('.mantine-Select-dropdown option');
         const optionCount = await options.count();
-        // 옵션 선탣 반복 실행하기
+        // 옵션 선택 반복 실행하기
         for (let i = 0; i < optionCount; i++) {
+            await page.locator('label:has-text("Palette")').click();
             await options.nth(i).click();
-            const selectedPalette = await options.nth(i).textContent();
-            console.log(`Selected Palette ${i + 1}:`, selectedPalette);
+            await options.nth(i).textContent();
         }
     });
 
