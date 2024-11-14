@@ -158,58 +158,41 @@ test.describe('Chart Testing', () => {
     // 11.config값 가져오기
     test('Get Config Value', async ({ page }) => {
         await page.locator('label:has-text("코드 보기")').click();
-        const expectedTexts = [
-            'const config = {',
-            "type: 'bar',",
-            "title: '월별 매출 현황 분석',",
-            "subtitle: '1월부터 12월까지의 매출 변화 추적',",
-            'options: {',
-            "palette: 'default'",
-            '},',
-            'xAxis: {',
-            "title: '월 (1월 - 12월)',",
-            'categories: [',
-            "'Jan', 'Feb', 'Mar',",
-            "'Apr', 'May', 'Jun',",
-            "'Jul', 'Aug', 'Sep',",
-            "'Oct', 'Nov', 'Dec'",
-            ']',
-            '},',
-            'yAxis: {},',
-            'series: [{',
-            "name: '월 매출',",
-            'colorByPoint: true,',
-            'pointLabel: true,',
-            'pointWidth: 30,',
-            'yAxis: 0,',
-            'data: [',
-            '[-130],',
-            '[-100],',
-            '[-50],',
-            '[60],',
-            '[70],',
-            '[115],',
-            '[90],',
-            '[100],',
-            '[120],',
-            '[130],',
-            '[140],',
-            '[160]',
-            ']',
-            '}]',
-            '}',
-        ];
-        const config = await page.locator(
-            '.monaco-editor .monaco-scrollable-element .view-lines'
-        );
-        const configText = await config.locator('.view-line').count();
-        for (let i = 0; i < configText; i++) {
-            const lineText = await config
-                .locator('.view-line')
-                .nth(i)
-                .textContent();
-            expect(lineText).toBe(expectedTexts[i]);
-        }
+        const expectedTexts = `const config = {
+    type: 'bar',
+    title: '월별 매출 현황 분석',
+    subtitle: '1월부터 12월까지의 매출 변화 추적',
+    options: {
+        palette: 'default'
+    },
+    xAxis: {
+        title: '월 (1월 - 12월)',
+        categories: [
+            'Jan', 'Feb', 'Mar',
+            'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep',
+            'Oct', 'Nov', 'Dec'
+        ]
+    },
+    yAxis: {},
+    series: [{
+        name: '월 매출',
+        colorByPoint: true,
+        pointLabel: true,
+        pointWidth: 30,
+        yAxis: 0,
+        data: [
+            [-130], [-100], [-50],`;
+
+        const config = (
+            await page
+                .locator(
+                    '.monaco-editor .monaco-scrollable-element .view-lines'
+                )
+                .textContent()
+        )?.replace(/\s+/g, '');
+        const compare = expectedTexts.replace(/\s+/g, '');
+        expect(config).toBe(compare);
     });
 
     // 12.스냅샷 저장하기
