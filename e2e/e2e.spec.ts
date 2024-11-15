@@ -1,5 +1,4 @@
 import { test, expect } from '@playwright/test';
-import { delay } from 'q';
 
 test.describe('Chart Testing', () => {
     test.beforeEach(async ({ page }) => {
@@ -67,23 +66,17 @@ test.describe('Chart Testing', () => {
 
     // 6.yAxis title이 안 그려진 거 확인하기
     test('Check yAxis Title not rendered', async ({ page }) => {
-        const yAxisTitle = page.locator('.rct-axis[xy="y"] .rct-axis-title');
-        const yAxisTitleStyle = await yAxisTitle.evaluate(
-            (el) => el.style.display === 'none'
-        );
-        expect(yAxisTitleStyle).toBeTruthy();
+			const yAxisTitle = page.locator('.rct-axis[xy="y"] .rct-axis-title');
+			const yAxisTitleNull = await yAxisTitle.textContent();
+			expect(yAxisTitleNull).toBe('');
     });
 
     // 7.Data point가 음수인지 양수인지 확인하기
     test('Check Data Points Sign', async ({ page }) => {
-        // .rct-line 요소 중 세 번째 요소의 위치를 가져오기
-        const yAxisZeroLinePosition = await page.evaluate(() => {
-            const lines = document.querySelectorAll(
-                '.rct-axis-grid .rct-axis-grid-line'
-            ); // .rct 내부의 .rct-line 요소들 선택
-            const yAxisZeroLine = lines[2]; // 세 번째 .rct-line 요소 선택
-            return yAxisZeroLine.getBoundingClientRect().top;
-        });
+			// .rct-line 요소 중 세 번째 요소의 위치를 가져오기
+			const lines = page.locator('.rct-axis-grid .rct-axis-grid-line').nth(2); // .rct 내부의 .rct-line 요소들 선택
+			// 라벨이 0인 라인의 위치
+			const b = lines.boundingBox();
 
         // 각 데이터 포인트 가져오기
         const dataPoints = await page.locator('.rct-point-label');
@@ -92,25 +85,23 @@ test.describe('Chart Testing', () => {
         // 각 데이터 포인트가 0 라인을 기준으로 위치하는지 검사
         for (let i = 0; i < pointCount; i++) {
             // 각 데이터 포인트의 y 좌표 가져오기
-            const pointYPosition = await dataPoints
-                .nth(i)
-                .evaluate((el) => el.getBoundingClientRect().top);
+					const pointYPosition = await dataPoints.nth(i).boundingBox();
 
             // 데이터 포인트의 값을 가져오기
             const pointValueText = await dataPoints.nth(i).textContent();
             const pointValue = parseFloat(pointValueText || '0');
 
             // 값이 양수일 때 0 기준선 위에 있는지 확인
-            if (pointValue > 0) {
-                expect(pointYPosition).toBeLessThan(yAxisZeroLinePosition);
+					if (pointValue > 0) {
+                expect(pointYPosition).toBeLessThan(b);
             }
             // 값이 음수일 때 0 기준선 아래에 있는지 확인
             else if (pointValue < 0) {
-                expect(pointYPosition).toBeGreaterThan(yAxisZeroLinePosition);
+                expect(pointYPosition).toBeGreaterThan(b);
             }
             // 값이 0일 때는 기준선과 같은 위치에 있는지 확인
             else {
-                expect(pointYPosition).toBeCloseTo(yAxisZeroLinePosition, 1);
+                expect(pointYPosition).toBeCloseTo(b, 1);
             }
         }
     });
