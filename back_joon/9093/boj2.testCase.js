@@ -1,4 +1,4 @@
-export const testCases2 = [
+export const reverseTextTest = [
     '8',
     'I am happy today',
     'We want to win the first prize',
