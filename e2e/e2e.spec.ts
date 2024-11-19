@@ -66,18 +66,18 @@ test.describe('Chart Testing', () => {
 
     // 6.yAxis title이 안 그려진 거 확인하기
     test('Check yAxis Title not rendered', async ({ page }) => {
-			const yAxisTitle = page.locator('.rct-axis[xy="y"] .rct-axis-title');
-			const yAxisTitleNull = await yAxisTitle.textContent();
-			expect(yAxisTitleNull).toBe('');
+        const yAxisTitle = page.locator('.rct-axis[xy="y"] .rct-axis-title');
+        const yAxisTitleNull = await yAxisTitle.textContent();
+        expect(yAxisTitleNull).toBe('');
     });
 
     // 7.Data point가 음수인지 양수인지 확인하기
     test('Check Data Points Sign', async ({ page }) => {
-			// .rct-line 요소 중 세 번째 요소의 위치를 가져오기
-			const lines = page.locator('.rct-axis-grid .rct-axis-grid-line').nth(2); // .rct 내부의 .rct-line 요소들 선택
-			// 라벨이 0인 라인의 위치
-			const b = lines.boundingBox();
-
+        // .rct-line 요소 중 세 번째 요소의 위치를 가져오기
+        const lines = page.locator('.rct-axis-grid .rct-axis-grid-line').nth(2); // .rct 내부의 .rct-line 요소들 선택
+        // 라벨이 0인 라인의 위치
+        const boundingBox = await lines.boundingBox();
+        const yAxisZeroLinePosition = boundingBox?.y ?? 0;
         // 각 데이터 포인트 가져오기
         const dataPoints = await page.locator('.rct-point-label');
         const pointCount = await dataPoints.count();
@@ -85,23 +85,24 @@ test.describe('Chart Testing', () => {
         // 각 데이터 포인트가 0 라인을 기준으로 위치하는지 검사
         for (let i = 0; i < pointCount; i++) {
             // 각 데이터 포인트의 y 좌표 가져오기
-					const pointYPosition = await dataPoints.nth(i).boundingBox();
-
+            const pointYPosition = await dataPoints.nth(i).boundingBox();
+            const pointYPositions = pointYPosition?.y ?? 0;
             // 데이터 포인트의 값을 가져오기
             const pointValueText = await dataPoints.nth(i).textContent();
+            // pointValueText를 숫자로
             const pointValue = parseFloat(pointValueText || '0');
 
             // 값이 양수일 때 0 기준선 위에 있는지 확인
-					if (pointValue > 0) {
-                expect(pointYPosition).toBeLessThan(b);
+            if (pointValue > 0) {
+                expect(pointYPositions).toBeLessThan(yAxisZeroLinePosition);
             }
             // 값이 음수일 때 0 기준선 아래에 있는지 확인
             else if (pointValue < 0) {
-                expect(pointYPosition).toBeGreaterThan(b);
+                expect(pointYPositions).toBeGreaterThan(yAxisZeroLinePosition);
             }
             // 값이 0일 때는 기준선과 같은 위치에 있는지 확인
             else {
-                expect(pointYPosition).toBeCloseTo(b, 1);
+                expect(pointYPositions).toBeCloseTo(yAxisZeroLinePosition, 1);
             }
         }
     });
@@ -174,7 +175,9 @@ test.describe('Chart Testing', () => {
         yAxis: 0,
         data: [
             [-130], [-100], [-50],`;
-
+        await page.waitForSelector(
+            '.monaco-editor .monaco-scrollable-element .view-lines'
+        );
         const config = (
             await page
                 .locator(
